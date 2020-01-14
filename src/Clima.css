@@ -1,0 +1,26 @@
+.clima {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+}
+
+.clima-dia {
+  font-weight: bold;
+  opacity: 60%;
+}
+
+.clima-max {
+  padding-right: 8px;
+}
+
+.clima-min {
+  opacity: 60%;
+}
+
+.clima-icono {
+  width: 48px;
+  height: 48px;
+  margin: 10px;
+}
