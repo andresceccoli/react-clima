@@ -5,6 +5,9 @@ import rain from "./iconos/003-rainy.png";
 import Clima from "./Clima";
 import "./ClimaBarra.css";
 
+
+
+
 class ClimaBarra extends React.Component {
   
   // state = {};
@@ -13,7 +16,9 @@ class ClimaBarra extends React.Component {
     super(props);
 
     this.state = {
-      diaNuevo: 'Dom'
+      dia: '',
+      max: '',
+      min: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,21 +45,24 @@ class ClimaBarra extends React.Component {
 
   handleChange(e) {
     this.setState({
-      diaNuevo: e.target.value
+      [e.target.name]: e.target.value
     });
   }
 
   onAgregar() {
     const d = {
-      dia: this.state.diaNuevo,
-      max: 30,
-      min: 15,
+      dia: this.state.dia,
+      max: Number(this.state.max),
+      min: Number(this.state.min),
       icono: sun
     };
 
+    // NO modificar variable existente
+    // this.state.data.push(d);
+
     const nuevoData = [...this.state.data, d];
     this.setState({
-      data: nuevoData
+      data: nuevoData, dia: '', max: '', min: ''
     });
   }
 
@@ -63,7 +71,9 @@ class ClimaBarra extends React.Component {
     return (
       <div>
         <div>
-          <input type="text" name="dia" value={this.state.diaNuevo} onChange={this.handleChange} />
+          <input type="text" name="dia" placeholder="Dia" value={this.state.dia} onChange={this.handleChange} />
+          <input type="number" name="max" placeholder="Max" value={this.state.max} onChange={this.handleChange} />
+          <input type="number" name="min" placeholder="Min" value={this.state.min} onChange={this.handleChange} />
           <button onClick={this.onAgregar}>Agregar</button>
         </div>
         <div className="clima-barra">
